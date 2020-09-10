@@ -1,0 +1,51 @@
+package com.company;
+
+public class Song {
+    private String name;
+    private double time;
+    private boolean isListened;
+
+
+
+    public Song(String name, double time) {
+        this.name = name;
+        this.time = time;
+        this.isListened = false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public boolean isListened() {
+        return isListened;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    public void setListened(boolean listened) {
+        isListened = listened;
+    }
+
+    public boolean playSong(){
+        System.out.println("Song "+ this.name+ " was played for " + this.time + " seconds");
+        return this.isListened = true;
+
+    }
+    public String songDetails(){
+        return name + " has " + time +" seconds ";
+    }
+
+
+
+}
