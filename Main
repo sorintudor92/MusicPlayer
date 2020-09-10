@@ -1,0 +1,88 @@
+package com.company;
+
+
+import java.util.*;
+
+
+public class Main {
+
+    static ArrayList<Song> playList = new ArrayList<>();
+    static ArrayList<Song> listenPlayList = new ArrayList<>();
+    static Map<Song,Integer> listOfSong = new HashMap<>();
+    static Set<String> playedSong = new HashSet<>();
+
+
+
+    public static void main(String[] args) {
+        listenMusic();
+        playList();
+        convertString();
+        countListenSongs(listenPlayList);
+        showMelodies();
+    }
+
+
+
+    public static void listenMusic(){
+        // Add all songs to your playlist
+        playList.add(new Song("Song1",90));
+        playList.add(new Song("Song2",115));
+        playList.add(new Song("Song3",95));
+        playList.add(new Song("Song4",92));
+        playList.add(new Song("Song5",105));
+        playList.add(new Song("Song6",180));
+        playList.add(new Song("Song7",160));
+        playList.add(new Song("Song8",195));
+        playList.add(new Song("Song9",170));
+        playList.add(new Song("Song10",155));
+        for (Song song: playList){
+            showMessage(song.getName(), song.getTime());
+        }
+        System.out.println("------------------------------------------------------------------------------------");
+    }
+    public static void playList(){
+        //Add music to be litened
+        listenPlayList.add(playList.get(0));
+        listenPlayList.add(playList.get(2));
+        listenPlayList.add(playList.get(4));
+        listenPlayList.add(playList.get(2));
+        listenPlayList.add(playList.get(2));
+        for (Song song:listenPlayList) {
+            song.setListened(true);
+        }
+    }
+    public static void convertString(){
+        for (Song music : listenPlayList){
+            playedSong.add(music.songDetails());
+        }
+        Iterator iterator = playedSong.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next() + "\n****************************");
+        }
+    }
+    public static void countListenSongs(ArrayList<Song> listenPlayList){
+        for (Song song : listenPlayList){
+            Integer repeat = listOfSong.get(song);
+                if (repeat == null) {
+                    listOfSong.put(song, 1);
+                } else if (repeat != null) {
+                    listOfSong.put(song, repeat + 1);
+                }
+
+        }
+    }
+    public static void showMelodies(){
+    for (Map.Entry<Song,Integer> value : listOfSong.entrySet()){
+        showMessage(value.getKey().getName(),(int)value.getValue());
+    }
+
+}
+    public static void showMessage(String name,double number){
+    System.out.println("The song " + name + " was played "+ number + " time");
+}
+
+    }
+
+
+
+
