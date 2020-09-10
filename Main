@@ -24,7 +24,6 @@ public class Main {
 
 
     public static void listenMusic(){
-        // Add all songs to your playlist
         playList.add(new Song("Song1",90));
         playList.add(new Song("Song2",115));
         playList.add(new Song("Song3",95));
@@ -38,16 +37,17 @@ public class Main {
         for (Song song: playList){
             showMessage(song.getName(), song.getTime());
         }
-        System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------");
     }
     public static void playList(){
-        //Add music to be litened
         listenPlayList.add(playList.get(0));
         listenPlayList.add(playList.get(2));
         listenPlayList.add(playList.get(4));
         listenPlayList.add(playList.get(2));
         listenPlayList.add(playList.get(2));
-        for (Song song:listenPlayList) {
+
+    for (Song song:listenPlayList) {
+        showMessage(song.getName(), song.getTime());
             song.setListened(true);
         }
     }
@@ -72,15 +72,14 @@ public class Main {
         }
     }
     public static void showMelodies(){
-    for (Map.Entry<Song,Integer> value : listOfSong.entrySet()){
-        showMessage(value.getKey().getName(),(int)value.getValue());
+    for (Map.Entry<Song,Integer> melodies : listOfSong.entrySet()){
+        showMessage(melodies.getKey().getName(),(int)melodies.getValue());
     }
 
 }
     public static void showMessage(String name,double number){
-    System.out.println("The song " + name + " was played "+ number + " time");
+    System.out.println("The song " + name + " was played "+ number);
 }
-
     }
 
 
